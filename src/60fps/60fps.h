@@ -11,5 +11,6 @@
 #define g_MsLastTickSecond   (*(int32*)0xa92e44)
 
 int Clock_CalculateTickDelta();
+void Clock_Init60FPS();
 
 #endif

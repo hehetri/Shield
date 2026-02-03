@@ -15,7 +15,7 @@ CFLAGS   := -O0 -pipe -Wno-int-conversion -fno-omit-frame-pointer -DDEBUG \
 INCDIRS  := -I$(SRCDIR)
 
 LFLAGS   := -shared \
-            -nostdlib \
+            -nostdlib -nostartfiles -nodefaultlibs \
             -Wl,--entry=DllMainCRTStartup@12 \
             -Wl,--enable-stdcall-fixup \
             -lmsvcrt \
