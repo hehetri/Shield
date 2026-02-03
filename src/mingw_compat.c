@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 int __mingw_vprintf(const char *format, va_list args) {
-    return _vprintf(format, args);
+    return vprintf(format, args);
 }
 
 int __mingw_printf(const char *format, ...) {
