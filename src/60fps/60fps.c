@@ -3,10 +3,27 @@
 #include "main.h"
 #include "60fps/60fps.h"
 
-#undef g_MsTickDesired
-#define g_MsTickDesired 16 /*60FPS hack*/
+#define FPS_TICK_MS 16 /*60FPS hack*/
+
+static int g_clock_initialized = 0;
+
+void Clock_Init60FPS() {
+    int32 now = timeGetTime();
+    g_MsTickDesired = FPS_TICK_MS;
+    g_MsOld = now;
+    g_MsLastTick = now;
+    g_MsLastTickSecond = now;
+    g_OverflowFrames = 0;
+    g_FPS = 0;
+    g_FrameCounter = 0;
+    g_FrameWasTickSecond = 0;
+    g_clock_initialized = 1;
+}
 
 int Clock_CalculateTickDelta() {
+    if (!g_clock_initialized) {
+        Clock_Init60FPS();
+    }
     int32 msOld = g_MsOld;
     int32 msNow = timeGetTime();
     if ((msNow - msOld) > 1000) {
