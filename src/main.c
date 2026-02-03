@@ -6,6 +6,10 @@
 #include "60fps/60fps.h"
 #include "config.h"
 
+#ifndef DISABLE_GAME_PATCHES
+#define DISABLE_GAME_PATCHES 1
+#endif
+
 #ifdef DEBUG
 BOOL __stdcall SetRectWrapper(LPRECT lprc, int xLeft, int yTop, int xRight, int yBottom) {
     printf("SetRect(%lu,%lu, %lu,%lu)\n", xLeft,yTop,xRight,yBottom);
@@ -114,20 +118,25 @@ BOOL WINAPI DllMainCRTStartup(HMODULE module, DWORD reason, LPVOID reserved) {
         // ThreadList_RemoveThread(GetCurrentThreadId());
         break;
     case DLL_PROCESS_ATTACH:
+#if !DISABLE_GAME_PATCHES
         removeGameGuard();
         overwriteWindowTitle();
         installOnLoadHook();
         loadHooks();
         ApplyInitialUIPatches();
-        
-#ifndef DEBUG
-        LoadAntihack();
-#else
-        allowMulticlienting();
-#endif
 
-#ifdef WITH_SEX
+    #ifndef DEBUG
+        LoadAntihack();
+    #else
+        allowMulticlienting();
+    #endif
+
+    #ifdef WITH_SEX
         Sex_Init();
+    #endif
+#else
+        (void)module;
+        (void)reserved;
 #endif
         break;
     }
