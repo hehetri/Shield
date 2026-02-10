@@ -16,6 +16,9 @@ void PatchScalingCode(void);
 void CViewLogin_ApplyInitialPatches(void);
 void CMyInfo_ApplyInitialUIPatches(void);
 
+/* Navigation */
+void CUI_TryReturnToLobbyByEsc(void);
+
 /* Lobby */
 void __stdcall CViewLobby_ApplyInitialUIPatches(void);
 void __stdcall CViewLobby_Create(void);

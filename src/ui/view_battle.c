@@ -6,6 +6,8 @@
 
 void __stdcall CViewBattle_Prepare() {
 
+    CUI_TryReturnToLobbyByEsc();
+
     const void* pUI = 0x00A96A20;
     RECT* pInputRect = (RECT*)(ReadInt32(pUI, 0) + 0x404); // [g_pDungeonPlay]+0x404
     pInputRect->left = 275;
