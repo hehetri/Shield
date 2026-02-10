@@ -19,6 +19,7 @@ void CViewRoom_ApplyInitialUIPatches() {
  * When ending the game then this function is called twice.
 **/
 void CViewRoom_Prepare() {
+    CUI_TryReturnToLobbyByEsc();
     // printf("conditions: %i %i %i\n",
     //     (10 == g_pViewCurrent),
     //     (1 == ReadInt32(0x00B17DBC, 0)),
