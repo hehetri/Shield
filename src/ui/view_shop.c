@@ -76,11 +76,7 @@ void CViewShop_ApplyInitialUIPatches() {
     };
     UnprotectedMemcpy(0x0052E266, comingSoonImage, sizeof(comingSoonImage));
 
-    // Gigas and coin texts
-    char gigasText[] = { 0x68, 0x47, 0x01, 0x00, 0x00, 0x6A, 0x76, 0x90, 0x90, 0x90 };
-    char coinText[] = { 0x68, 0x47, 0x01, 0x00, 0x00, 0x68, 0xEE, 0x00, 0x00, 0x00 };
-    UnprotectedMemcpy(0x004F7DB3, gigasText, sizeof(gigasText));
-    UnprotectedMemcpy(0x004F7DEE, coinText, sizeof(coinText));
+    // Keep default game behavior for Gigas/coin labels so original golden text color is preserved.
 
     // Page number
     char textPageNum[] = {
