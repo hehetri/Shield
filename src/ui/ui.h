@@ -18,7 +18,6 @@ void CMyInfo_ApplyInitialUIPatches(void);
 
 /* Navigation */
 void CUI_TryReturnToLobbyByEsc(void);
-void CUI_HandleGlobalHotkeys(WPARAM wParam);
 
 /* Lobby */
 void __stdcall CViewLobby_ApplyInitialUIPatches(void);
